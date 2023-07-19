@@ -17,7 +17,7 @@ for message in st.session_state.messages:
 
 if prompt := st.chat_input("ECサイトのイベント設定について教えてください"):
     pre_start = '''
-    あなたはウェブサイトコンサルです。
+    あなたはGA4（Google Analytics）に特化したウェブサイトコンサルです。
     このフローに則ってイベント設定の具体的な方法(どのページでどのボタンを押すかというレベル)を教えてください。
 
     重要！！この内容は忘れないでください。
