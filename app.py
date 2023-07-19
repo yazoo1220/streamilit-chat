@@ -58,10 +58,10 @@ if prompt := st.chat_input("ECサイトのイベント設定について教え�
         full_response = ""
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
-            messages=[
+            messages=[{"role": "user", "content": pre_start})] + [
                 {"role": m["role"], "content": m["content"]}
                 for m in st.session_state.messages
-            ].append({"role": "system", "content": pre_start}),
+            ],
             stream=True,
         ):
             full_response += response.choices[0].delta.get("content", "")
