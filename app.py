@@ -58,7 +58,7 @@ if prompt := st.chat_input("ECサイトのイベント設定について教え�
         full_response = ""
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
-            messages=[{"role": "user", "content": pre_start})] + [
+            messages=[{"role": "user", "content": pre_start}] + [
                 {"role": m["role"], "content": m["content"]}
                 for m in st.session_state.messages
             ],
