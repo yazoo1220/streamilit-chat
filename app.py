@@ -49,7 +49,7 @@ if prompt := st.chat_input("ECサイトのイベント設定について教え�
     質問は必ず一つのメッセージに一つです。重要なので忘れないでください。
 
     '''
-    st.session_state.messages.append({"role": "user", "content": pre_start + prompt})
+    st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
@@ -61,7 +61,7 @@ if prompt := st.chat_input("ECサイトのイベント設定について教え�
             messages=[
                 {"role": m["role"], "content": m["content"]}
                 for m in st.session_state.messages
-            ],
+            ].append({"role": "system", "content": pre_start}),
             stream=True,
         ):
             full_response += response.choices[0].delta.get("content", "")
